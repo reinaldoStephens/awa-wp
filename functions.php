@@ -6,6 +6,29 @@
  * @package Awa
  */
 
+if (!defined('AWA_DIR_PATH')) {
+    define('AWA_DIR_PATH', untrailingslashit(get_template_directory()));
+}
+
+if (!defined('AWA_DIR_URI')) {
+    define('AWA_DIR_URI', untrailingslashit(get_template_directory_uri()));
+}
+
+require_once AWA_DIR_PATH . '/inc/helpers/autoloader.php';
+
+function awa_get_theme_instance()
+{
+    \AWA_THEME\Inc\AWA_THEME::get_instance();
+}
+
+awa_get_theme_instance();
+
+function awa_enqueue_scripts()
+{
+}
+
+add_action('wp_enqueue_scripts', 'awa_enqueue_scripts');
+
 /**
  * Proper ob_end_flush() for all levels
  *
@@ -16,14 +39,3 @@ remove_action('shutdown', 'wp_ob_end_flush_all', 1);
 add_action('shutdown', function () {
     while (@ob_end_flush());
 });
-
-function awa_enqueue_scripts()
-{
-    wp_register_style('style-css', get_stylesheet_uri(), array(), null);
-    wp_register_script('main-js', get_template_directory_uri() . './assets/main.js', [], null, true);
-
-    wp_enqueue_style('style-css');
-    wp_enqueue_script('main-js');
-}
-
-add_action('wp_enqueue_scripts', 'awa_enqueue_scripts');
