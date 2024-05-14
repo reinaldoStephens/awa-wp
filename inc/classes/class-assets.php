@@ -37,10 +37,14 @@ class Assets
         // register styles
         wp_register_style('style-css', get_stylesheet_uri(), array(), null);
         wp_register_style('header-css', AWA_DIR_URI . '/assets/src/scss/header.scss', array(), null);
+        wp_register_style('footer-css', AWA_DIR_URI . '/assets/src/scss/footer.scss', array(), null);
+        wp_register_style('contactForm-css', AWA_DIR_URI . '/assets/src/scss/contactForm.scss', array(), null);
         wp_register_style('normalize-css', AWA_DIR_URI . '/assets/src/library/js/normalize.css', array(), null);
         // enqueue styles
         wp_enqueue_style('style-css');
         wp_enqueue_style('header-css');
+        wp_enqueue_style('footer-css');
+        wp_enqueue_style('contactForm-css');
         wp_enqueue_style('normalize-css');
     }
 
