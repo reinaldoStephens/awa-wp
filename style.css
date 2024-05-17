@@ -62,7 +62,7 @@ main {
     padding-bottom: 90px;
 }
 
-a {
+.header-section a {
     text-decoration: none;
     color: inherit;
 }
